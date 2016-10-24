@@ -1,0 +1,108 @@
+<extend name="Base/base" />
+<block name="head">
+    <link href="__JS__/plugins/chosen/chosen/chosen.css" rel="stylesheet">
+</block>
+<block name="content">
+    <div id="main_container">
+        <div class="row-fluid ">
+            <div class="span12">
+                <div class="box paint color_18">
+                    <div class="title">
+                        <h4> <i class="icon-bar-chart"></i><span>{$title}</span> </h4>
+                    </div>
+                    <!-- End .title -->
+                    <div class="content top">
+                        <form name="listForm">
+                            <table id="datatable_example" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
+                                <thead>
+                                    <tr>
+                                        <th class="no_sort"> <label class="checkbox "><input type="checkbox" class="check-all"> 全选</label>
+                                        </th>
+                                        <th class="no_sort">链接名称</th>
+                                        <th class="no_sort to_hide_phone">链接路径</th>
+                                        <th class="no_sort to_hide_phone">颜色</th>
+                                        <th class="no_sort"> 排序值 </th>
+                                        <th class="to_hide_phone ue no_sort"> 是否隐藏 </th>
+                                        <th class="ms no_sort "> 操作 </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--list contents start-->
+                                <notempty name="contents">
+                                    <foreach name="contents" item="content">
+                                        <tr>
+                                            <td><label class="checkbox "><input type="checkbox" class='ids' value="{$content[id]}"></label></td>
+                                            <td><a href="{:U('',array('pid'=>$content[id]))}">{$content['name']}</a></td>
+                                            <td>{$content['url']}</td>
+                                            <td><p class="{$content['class']}">{$content['class']}</p></td>
+                                            <td>{$content['sort']}</td>
+                                            <td><if condition="$content[hide] eq 1">隐藏<else/>显示</if></td>
+                                        <td class="ms">
+                                            <div class="btn-group"> 
+                                                <a class="btn btn-small" rel="tooltip" data-placement="left" data-original-title=" 编辑 " href="{:U('edit',array('id'=>$content['id']))}"><i class="gicon-edit"></i></a> 
+                                                <a class="btn  btn-small" rel="tooltip" data-placement="bottom" data-original-title="删除" href="{:U('delete',array('id'=>$content['id']))}"><i class="gicon-remove "></i></a> 
+                                            </div>
+                                        </td>
+                                        </tr>
+                                    </foreach>
+                                    <else/>
+                                    <tr>
+                                        <td cols="7">暂无数据</td>
+                                    </tr>
+                                </notempty>
+                                <!--list contents end-->
+                                </tbody>
+                            </table>
+                        </form>
+                        <div class="row-fluid  control-group mt15">
+
+                            <div class="pull-left span6 visible-desktop" action="#">
+                                <div class="row-fluid fluid ">
+                                    <button type="button" class="btn btn-inverse inline delete-all" url="{:U('delete')}">删除</button>
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <div class="pagination pull-right ">
+                                    {$page}
+                                </div >
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End row-fluid --> 
+                </div>
+                <!-- End .content --> 
+            </div>
+            <!-- End box --> 
+        </div>
+        <!-- End .span12 --> 
+    </div>
+</block>
+<block name="script">
+    <script language="javascript" type="text/javascript" src="__JS__/plugins/chosen/chosen/chosen.jquery.min.js"></script> 
+    <script type="text/javascript">
+        /**** Specific JS for this page ****/
+
+        $(document).ready(function () {
+
+            //删除信息
+            $('.list_sort').click(function () {
+                var url = $(this).attr('url');
+                var ids = $('.ids:checked');
+                var param = '';
+                if (ids.length > 0) {
+                    var str = new Array();
+                    ids.each(function () {
+                        str.push($(this).val());
+                    });
+                    param = str.join(',');
+                }
+
+                if (url != undefined && url != '') {
+                    window.location.href = url + '/ids/' + param;
+                }
+            });
+        });
+
+
+    </script>
+</block>

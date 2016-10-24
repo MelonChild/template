@@ -1,0 +1,52 @@
+<div id="sidebar" class="">
+    <div class="scrollbar">
+        <div class="track">
+            <div class="thumb">
+                <div class="end"></div>
+            </div>
+        </div>
+    </div>
+    <div class="viewport ">
+        <div class="overview collapse">
+            <div class="search row-fluid container">
+                <h2>搜索</h2>
+                <form class="form-search">
+                    <div class="input-append">
+                        <input type="text" class=" search-query" placeholder="">
+                        <button class="btn_search color_4">查找</button>
+                    </div>
+                </form>
+            </div>
+            <ul id="sidebar_menu" class="navbar nav nav-list container full">
+                <!--backmenu start-->
+                <foreach name="menus" item="menu">
+                    <li class="accordion-group <if condition='$this_menu eq $menu[url]'>active</if> {$menu['class']|default='color_4'}">
+                        <a <notempty name="menu[child]">class="accordion-toggle widgets collapsed " data-toggle="collapse" data-parent="#sidebar_menu" href="#collapse{$menu['id']}"<else/>class="dashboard"</notempty> href="/Admin/{$menu[url]}">
+                            <img src="__IMG__/menu_icons/{$menu[icon]}"><span>{$menu[name]}</span>
+                        </a>
+                    <notempty name="menu[child]">
+                        <ul id="collapse{$menu['id']}" class="accordion-body <if condition='$this_menu eq $menu[url]'>in</if> collapse">
+                            <foreach name="menu[child]" item="childmenu">
+                                <li <if condition='$this_child_menu eq $childmenu[url]'>class="active"</if>><a href="/Admin/{$childmenu.url}">{$childmenu.name}</a></li>
+                            </foreach>
+                        </ul>
+                    </notempty>
+                    </li>
+
+                </foreach>
+                <!--backmenu end-->
+            </ul>
+            
+            <div class="menu_states row-fluid container ">
+                <h2 class="pull-left">菜单设置</h2>
+                <div class="options pull-right">
+                    <button id="menu_state_1" class="color_4" rel="tooltip" data-state ="sidebar_icons" data-placement="top" data-original-title="菜单图标">1</button>
+                    <button id="menu_state_2" class="color_4 active" rel="tooltip" data-state ="sidebar_default" data-placement="top" data-original-title="固定菜单">2</button>
+                    <button id="menu_state_3" class="color_4" rel="tooltip" data-placement="top" data-state ="sidebar_hover" data-original-title="菜单浮动">3</button>
+                </div>
+            </div>
+            <!-- End sidebar_box --> 
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+<extend name="Base/base" />
+<block name="content">
+    <div id="main_container">
+        <div class="row-fluid">
+            <div class="span9">
+                <div class="box paint color_7">
+                    <div class="title">
+                        <h4> <span>{$title}</span> </h4>
+                    </div>
+                    <div class="content">
+                        <form class="form-horizontal cmxform" id="validateForm" method="post" action="" autocomplete="off">
+                            <div class="form-row control-group row-fluid">
+                                <label class="control-label span2">链接名称 <span class="help-block"></span> </label>
+                                <div class="controls span9">
+                                    <input id="name" name="name" type="text" required class="span12"/>
+                                </div>
+                            </div>
+                            <div class="form-row control-group row-fluid">
+                                <label class="control-label span2" for="hint-field">链接路径 <span class="help-block"></span> </label>
+                                <div class="controls span9">
+                                    <input id="url" name="url" type="text" required class="row-fluid"/>
+                                </div>
+                            </div>
+                            <div class="form-row control-group row-fluid">
+                                <label class="control-label span2">上级链接</label>
+                                <div class="controls span9">
+                                    <select data-placeholder="顶级菜单" class="row-fluid" name="pid">
+                                        <option value="0">顶级菜单</option>
+                                        <foreach name="allMenus" item="allMenu">
+                                            <option value="{$allMenu.id}">{$allMenu.name}</option>
+                                        </foreach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row control-group row-fluid">
+                                <label class="control-label span2" for="hint-field">排序值 <span class="help-block">由小到大</span> </label>
+                                <div class="controls span9">
+                                    <input name="sort" type="text" required value="0" class="row-fluid"/>
+                                </div>
+                            </div>
+                            <div class="form-row control-group row-fluid">
+                                <label class="control-label span2">菜单样式</label>
+                                <div class="controls span9">
+                                    <select data-placeholder="菜单样式" class="row-fluid" name="class">
+                                        <foreach name="menuClasses" item="menuClass">
+                                            <if condition="$menuClass[type] eq 1">
+                                                <option value="{$menuClass.color}" class="{$menuClass.color}">{$menuClass.color}颜色</option>
+                                            </if>
+                                        </foreach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row control-group row-fluid">
+                                <label class="control-label span2">菜单icon</label>
+                                <div class="controls span9">
+                                    <select data-placeholder="菜单icon"  name="icon" onchange=change(this)>
+                                        <foreach name="menuClasses" item="menuClass">
+                                            <if condition="$menuClass[type] eq 2">
+                                                <option value="{$menuClass.color}" style="background-image: '__IMG__/menu_icons/{$menuClass[color]}'">{$menuClass.color}</option>
+                                            </if>
+                                        </foreach>
+                                    </select>
+                                    <img id="img1"  src="__IMG__/menu_icons/{$menuClass[color]}">
+                                </div>
+                            </div>
+                            <div class="form-row control-group row-fluid">
+                                <label class="control-label span2">是否隐藏</label>
+                                <div class="controls span9">
+                                    <fieldset>
+                                        <label class="radio "><input type="radio" name="hide" value="0" checked/>显示</label>
+                                        <label class="radio "><input type="radio" name="hide" value="1"/>隐藏</label>
+                                        <label for="radios" class="error">Please select your gender</label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="form-actions row-fluid">
+                                <div class="span7 offset2">
+                                    <button type="submit" class="btn btn-primary">保存</button>
+                                     <a class="btn btn-secondary" href="{:U('index')}">取消</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End .span4 --> 
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script src="__JS__/plugins/validation/dist/jquery.validate.min.js" type="text/javascript"></script> 
+    <script src="__JS__/plugins/validation/localization/messages_zh.js" type="text/javascript"></script> 
+    <script type="text/javascript">
+                                        $().ready(function () {
+                                            // validate the comment form when it is submitted
+                                            // validate signup form on keyup and submit
+                                            $("#validateForm").validate({
+                                                rules: {
+                                                    name: {
+                                                        required: true,
+                                                    },
+                                                    url: {
+                                                        required: true,
+                                                    },
+                                                    sort: {
+                                                        required: true,
+                                                        digits: true,
+                                                    }
+                                                },
+                                            });
+
+                                        })
+                                        function change(o) {
+                                            img1.src = "/Public/Admin/img/menu_icons/" + o.value;
+                                        }
+    </script>
+</block>

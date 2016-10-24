@@ -1,0 +1,100 @@
+<extend name="Base/base" />
+<block name="head">
+</block>
+<block name="content">
+    <div id="main_container">
+        <div class="row-fluid ">
+            <div class="span12">
+                <div class="box paint color_18">
+                    <div class="title">
+                        <h4> <i class="icon-bar-chart"></i><span>{$title}</span> </h4>
+                    </div>
+                    <!-- End .title -->
+                    <div class="content top">
+                        <form name="listForm">
+                            <table id="datatable_example" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
+                                <thead>
+                                    <tr>
+                                        <th>用户ID</th>
+                                        <th>用户名</th>
+                                        <th>登陆次数</th>
+                                        <th>登陆时间</th>
+                                        <th>是否锁定</th>
+                                        <th>用户角色</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--list contents start-->
+                                <notempty name="list">
+                                    <foreach name="list" item="user">
+                                        <tr>
+                                            <td>[{$user.id}]</td>
+                                            <td>{$user.username}</td>
+                                            <td>{$user.logins}</td>
+                                            <td>{$user.last_login|date='y-m-d H:i',###}</td>
+                                            <td>
+                                        <if condition="$user.is_active eq 1">[启用]
+                                            <else />[锁定]
+                                        </if>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                <if condition="$user['username'] eq C('RBAC_SUPERADMIN')">
+                                                    系统管理员
+                                                    <else />         
+                                                    <foreach name="user.roles" item="role">
+                                                        <li>
+                                                            {$role.name}({$role.remark})
+                                                        </li>
+                                                    </foreach>
+                                                </if>
+                                            </ul>
+                                        </td>
+                                        <td class="ms">
+                                         <if condition="$user['username'] neq C('RBAC_SUPERADMIN')">
+                                            <div class="btn-group"> 
+                                                <if condition="$user.is_active eq 1">
+                                                    <a class="btn btn-small" rel="tooltip" data-placement="left" data-original-title=" 锁定 "  href="{:U('Admin/Rbac/setActive',array('id'=>$user['id'],'value'=>0))}"><i class="gicon-edit"></i></a>
+                                                    <else /> 
+                                                    <a class="btn btn-small" rel="tooltip" data-placement="left" data-original-title=" 启用 "  href="{:U('Admin/Rbac/setActive',array('id'=>$user['id'],'value'=>1))}"><i class="gicon-edit"></i></a>
+                                                </if>
+                                                <a class="btn btn-small" rel="tooltip" data-placement="left" data-original-title=" 编辑 " href="{:U('Admin/Rbac/editUser',array('id'=>$user['id']))}"><i class="gicon-edit"></i></a> 
+                                                <a class="btn  btn-small" rel="tooltip" data-placement="bottom" data-original-title="删除"  onclick="return confirm('是否确定要删除?');" href="{:U('Admin/Rbac/deleteUser',array('id'=>$user['id']))}"><i class="gicon-remove "></i></a> 
+                                            </div>
+                                        </if>
+                                        </td>
+                                        </tr>
+                                    </foreach>
+
+                                    <else/>
+                                    <tr>
+                                        <td cols="7">暂无数据</td>
+                                    </tr>
+                                </notempty>
+                                <!--list contents end-->
+                                </tbody>
+                            </table>
+                        </form>
+                        <div class="row-fluid  control-group mt15">
+                            <div class="pull-left span6 visible-desktop" action="#">
+                                <div class="row-fluid fluid ">
+                                    <a class="btn" href="{:U('addUser')}">新 增</a>
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <div class="pagination pull-right ">
+                                    {$page}
+                                </div >
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End row-fluid --> 
+                </div>
+                <!-- End .content --> 
+            </div>
+            <!-- End box --> 
+        </div>
+        <!-- End .span12 --> 
+    </div>
+</block>

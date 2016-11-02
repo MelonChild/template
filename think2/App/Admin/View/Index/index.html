@@ -1,0 +1,92 @@
+<extend name="Base/base" />
+
+<block name="content">
+    <div class="row">
+        <div id="paper-top">
+            <div class="col-sm-3">
+            </div>
+
+            <div class="col-sm-7">
+                <div class="devider-vertical visible-lg"></div>
+                <div class="tittle-middle-header">
+
+                    <div class="alert">
+                        <span class="tittle-alert entypo-info-circled"></span>
+                        欢迎回来,&nbsp;
+                        <strong>{$adminusers.name}!</strong>&nbsp;&nbsp;上次登录时间：{$lasttime}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ TITLE -->
+
+    <!-- BREADCRUMB -->
+    <ul id="breadcrumb">
+        <li>
+            <a href="{:U('Admin/Index/index')}" title="Sample page 1"><span class="entypo-home"></span></a>
+        </li>
+        <li><i class="fa fa-lg fa-angle-right"></i>
+        </li>
+        <li><a href="{:U('Admin/Index/index')}" title="Sample page 1">{$title}</a>
+        </li>
+        <li class="pull-right">
+            <div class="input-group input-widget">
+                <input style="border-radius:15px" type="text" placeholder="搜索" class="form-control">
+            </div>
+        </li>
+    </ul>
+
+    <!-- END OF BREADCRUMB -->
+
+    <div class="content-wrap">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="nest" id="FootableClose">
+                    <div class="title-alt">
+                        <h6>用户列表</h6>
+                    </div>
+
+                    <div class="body-nest" id="Footable">
+                        <table class="table-striped footable-res footable metro-blue" data-page-size="6">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        姓名
+                                    </th>
+                                    <th>
+                                        角色
+                                    </th>
+                                    <th>
+                                        创建时间
+                                    </th>
+                                    <th data-hide="phone">
+                                        状态
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <foreach name='users' item='user'>
+                                <tr>
+                                    <td>{$user.name}</td>
+                                    <td>{$user.role}</td>
+                                    <td>{$user.create_time|date="Y-m-d H:i",###}</td>
+                                    <td data-value="1">
+                                <if condition="$user[is_active] eq 1">
+                                    <span class="status-metro status-active" title="正常">正常</span>
+                                    <else/>
+                                    <span class="status-metro status-disabled" title="限制">限制</span>
+                                </if>
+
+                                </td>
+                                </tr> 
+                            </foreach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

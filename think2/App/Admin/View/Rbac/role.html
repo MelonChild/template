@@ -1,0 +1,70 @@
+<extend name="Base/base" />
+<block name="head">
+</block>
+<block name="content">
+  <div class="content-wrap">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="nest" id="FootableClose">
+                    <div class="title-alt">
+                        <h6>用户列表</h6>
+                    </div>
+
+                    <div class="body-nest" id="Footable"> <div class="pull-left span6 visible-desktop" action="#">
+                                <div class="row-fluid fluid ">
+                                    <a class="btn" href="{:U('addRole')}">新 增</a>
+                                </div>
+                            </div>
+                            <table id="datatable_example" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>角色名称</th>
+                                        <th>角色描述</th>
+                                        <th>开启状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--list contents start-->
+                                <notempty name="roles">
+                                    <foreach name="roles" item="v">
+                                        <tr>
+                                            <td>{$v.id}</td>
+                                            <td>{$v.name}</td>
+                                            <td>{$v.remark}</td>
+                                            <td><if condition="$v['status']">开启<else/>关闭</if></td>
+                                        <td>
+                                            <a href="{:U('Admin/Rbac/access',array('rid'=>$v['id']))}">配置权限</a>|
+                                            <a href="{:U('Admin/Rbac/editRole',array('id'=>$v['id']))}">修改角色</a>|
+                                            <a onclick="return confirm('是否确定要删除?');" href="{:U('Admin/Rbac/deleteRole',array('rid'=>$v['id']))}">删除角色</a>
+                                        </td>
+                                        </tr>
+                                    </foreach>
+                                    <else/>
+                                    <tr>
+                                        <td cols="5">暂无数据</td>
+                                    </tr>
+                                </notempty>
+                                <!--list contents end-->
+                                </tbody>
+                            </table>
+                        <div class="row-fluid  control-group mt15">
+                            <div class="span6">
+                                <div class="pagination pull-right ">
+                                    {$page}
+                                </div >
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End row-fluid --> 
+                </div>
+                <!-- End .content --> 
+            </div>
+            <!-- End box --> 
+        </div>
+        <!-- End .span12 --> 
+    </div>
+</block>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class="sidebar_default  no-js" lang="en">
+    <head>
+    <include file="Base:head" />
+    <block name="head"></block>
+</head>
+
+<body>
+    <!-- TOP NAVBAR -->
+<block name="header">
+    <include file="Base:header" />
+</block>
+<!-- /END OF TOP NAVBAR -->
+
+
+<!--左边栏-->
+<block name="left">
+    <include file="Base:left" />
+</block>
+<!-- END OF SIDE MENU -->
+
+
+
+<!--  PAPER WRAP -->
+<div class="wrap-fluid">
+    <div class="container-fluid paper-wrap bevel tlbr">
+        <block name="content"></block>
+    </div>
+</div>
+<!-- /END OF CONTENT -->
+
+
+<!-- RIGHT SLIDER CONTENT -->
+<block name="right">
+    <include file="Base:right" />
+</block>
+<!--  END RIGHT SLIDER CONTENT -->
+<!-- FOOTER -->
+<include file="Base:foot" />
+<!-- / END OF FOOTER -->
+<!--  END OF PAPER WRAP -->
+
+
+
+<block name="script"></block>
+
+</body>
+</html>

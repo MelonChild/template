@@ -1,0 +1,102 @@
+<extend name="Base/base" />
+<block name="head">
+</block>
+<block name="content">
+    <ul id="breadcrumb">
+        <li>
+            <a href="{:U('Admin/Index/index')}" title="Sample page 1"><span class="entypo-home"></span></a>
+        </li>
+        <li><i class="fa fa-lg fa-angle-right"></i>
+        </li>
+        <li><a title="Sample page 1">{$title}</a>
+        </li>
+    </ul>
+    <div class="content-wrap">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="nest" id="FootableClose">
+                    <div class="title-alt">
+                        <h6>{$title}</h6>
+                    </div>
+                    <div class="body-nest" id="">
+                        <p class="lead well"><input type="checkbox" class="check-all"> 全选 <button type="button" class="btn btn-inverse delete-all" url="{:U('delete')}">删除</button>
+                            <a class='btn btn-default' href="{:U('add')}">新增</a>
+                        </p>
+                        <table class="table-striped footable-res footable metro-blue" data-page-size="6">
+                            <thead>
+                                <tr>
+                                    <th class="">链接ID</th>
+                                    <th class="">链接名称</th>
+                                    <th class=" ">链接路径</th>
+                                    <th class=""> 排序值 </th>
+                                    <th class=""> 是否隐藏 </th>
+                                    <th class=" "> 操作 </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--list contents start-->
+                            <notempty name="contents">
+                                <foreach name="contents" item="content">
+                                    <tr>
+                                        <td><input type="checkbox" class='ids' value="{$content[id]}">{$content['id']}</td>
+                                        <td><a href="{:U('',array('pid'=>$content[id]))}">{$content['name']}</a></td>
+                                        <td>{$content['url']}</td>
+                                        <td>{$content['sort']}</td>
+                                        <td><if condition="$content[hide] eq 1">隐藏<else/>显示</if></td>
+                                    <td class="ms">
+                                        <div class="btn-group"> 
+                                            <a class="btn btn-small" rel="tooltip" data-placement="left" data-original-title=" 编辑 " href="{:U('edit',array('id'=>$content['id']))}">编辑</a> 
+                                            <a class="btn  btn-small" rel="tooltip" data-placement="bottom" data-original-title="删除" href="{:U('delete',array('id'=>$content['id']))}">删除</a> 
+                                        </div>
+                                    </td>
+                                    </tr>
+                                </foreach>
+                                <else/>
+                                <tr>
+                                    <td cols="7">暂无数据</td>
+                                </tr>
+                            </notempty>
+                            <!--list contents end-->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7">
+                                        {$page}
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        /**** Specific JS for this page ****/
+
+        $(document).ready(function () {
+
+            //删除信息
+            $('.list_sort').click(function () {
+                var url = $(this).attr('url');
+                var ids = $('.ids:checked');
+                var param = '';
+                if (ids.length > 0) {
+                    var str = new Array();
+                    ids.each(function () {
+                        str.push($(this).val());
+                    });
+                    param = str.join(',');
+                }
+
+                if (url != undefined && url != '') {
+                    window.location.href = url + '/ids/' + param;
+                }
+            });
+        });
+
+
+    </script>
+</block>

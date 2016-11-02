@@ -1,0 +1,123 @@
+<extend name="Base/base" />
+<block name="content">
+    <ul id="breadcrumb">
+        <li>
+            <a href="{:U('Admin/Index/index')}" title="Sample page 1"><span class="entypo-home"></span></a>
+        </li>
+        <li><i class="fa fa-lg fa-angle-right"></i>
+        </li>
+        <li><a title="{$title}">{$title}</a>
+        </li>
+    </ul>
+    <div class="content-wrap">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="nest" id="elementClose">
+                    <div class="title-alt">
+                        <h6>{$title}</h6>
+                    </div>
+
+                    <div class="body-nest" id="element">
+
+                        <div class="panel-body">
+                            <form id="validateForm" method="post" action="" class="form-horizontal bucket-form">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">链接名称</label>
+                                    <div class="col-sm-6">
+                                        <input id="name" name="name" value="{$content.name}"  type="text" required class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">链接路径</label>
+                                    <div class="col-sm-6">
+                                        <input id="url" name="url" type="text" value="{$content.url}"  required class="form-control"/>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">排序值</label>
+                                    <div class="col-sm-6">
+                                        <input id="sort" name="sort" type="text" value="{$content.sort}"   class="form-control"/>
+                                        <span class="help-block">由小到大</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">上级链接</label>
+                                    <div class="col-sm-6">
+                                        <select data-placeholder="顶级菜单" class="form-control" name="pid">
+                                            <option value="0">顶级菜单</option>
+                                            <foreach name="allMenus" item="allMenu">
+                                                <option value="{$allMenu.id}"  <if condition="$content['pid'] eq $allMenu['id']">selected</if>>{$allMenu.name}</option>
+                                            </foreach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">菜单icon</label>
+                                    <div class="col-sm-6">
+                                        <select data-placeholder="菜单icon" class="form-control setIcon"  name="icon">
+                                            <foreach name="menuClasses" item="menuClass">
+                                                <option value="{$menuClass.color}" <if condition="$content['icon'] eq $menuClass['color']">selected</if>>{$menuClass.color}</option>
+                                            </foreach>
+                                        </select>
+                                        <span class="help-block"><i class="{$content['icon']|default='icon-document-edit'}" id="setIcon"> </i></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">是否隐藏</label>
+                                    <div class="col-sm-6">
+                                        <input type="radio" name="hide" value="0" id="square-radio-1" <if condition="$content['hide'] eq 0">checked</if>/>
+                                        <label for="square-radio-1">显示</label>
+                                        <input type="radio" name="hide" value="1" id="square-radio-2" <if condition="$content['hide'] eq 1">checked</if>/>
+                                        <label for="square-radio-2">隐藏</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"></label>
+                                    <div class="col-sm-6">
+                                        <input type="hidden" name="id" value="{$content.id|default=''}">
+                                        <button type="submit" class="btn btn-primary">保存</button>
+                                        <a class="btn btn-default" href="{:U('index')}">取消</a>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script src="__JS__/jquery.validate.min.js" type="text/javascript"></script> 
+    <script src="__JS__/messages_zh.js" type="text/javascript"></script> 
+    <script type="text/javascript">
+        $().ready(function () {
+            // validate the comment form when it is submitted
+            // validate signup form on keyup and submit
+            $("#validateForm").validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    url: {
+                        required: true,
+                    },
+                    sort: {
+                        required: true,
+                        digits: true,
+                    }
+                },
+            });
+
+            $(".setIcon").change(function () {
+                $("#setIcon").attr('class', $(this).val())
+            })
+
+        })
+    </script>
+</block>

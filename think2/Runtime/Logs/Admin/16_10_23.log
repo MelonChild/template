@@ -1,0 +1,103 @@
+[ 2016-10-23T21:29:08+08:00 ] ::1 /Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000763s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000393s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000448s ]
+
+[ 2016-10-23T21:29:08+08:00 ] ::1 /index.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000417s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000527s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000052s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000117s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.054938s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.054985s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000233s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000259s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000336s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000385s ]
+
+[ 2016-10-23T21:29:16+08:00 ] ::1 /index.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000292s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000406s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000467s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `users` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `users` SET `last_login`='1477229356',`logins`='17' WHERE `id` = 1 [ RunTime:0.0670s ]
+
+[ 2016-10-23T21:29:18+08:00 ] ::1 /index.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000351s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000351s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000392s ]
+SQL: SHOW COLUMNS FROM `backmenu` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `backmenu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort ASC  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `backmenu` WHERE `pid` = 1 AND `hide` = 0 ORDER BY sort ASC  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `backmenu` WHERE `pid` = 2 AND `hide` = 0 ORDER BY sort ASC  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `backmenu` WHERE `pid` = 5 AND `hide` = 0 ORDER BY sort ASC  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `users` [ RunTime:0.0067s ]
+SQL: SELECT * FROM `users` LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: uid D:\project\think3_2\App\Admin\Controller\BaseController.class.php 第 49 行.
+SQL: SHOW COLUMNS FROM `roles_users` [ RunTime:0.0049s ]
+SQL: SELECT `role_id` FROM `roles_users` WHERE `user_id` = null LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000283s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000355s ]
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 61 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 62 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 62 行.
+NOTIC: [8] Use of undefined constant icon - assumed 'icon' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 63 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 63 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 65 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 61 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 62 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 62 行.
+NOTIC: [8] Use of undefined constant icon - assumed 'icon' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 63 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 63 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 65 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 65 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 66 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 66 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 66 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 66 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 61 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 62 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 62 行.
+NOTIC: [8] Use of undefined constant icon - assumed 'icon' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 63 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 63 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 65 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 65 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 66 行.
+NOTIC: [8] Use of undefined constant child - assumed 'child' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 66 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 66 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 66 行.
+NOTIC: [8] Use of undefined constant url - assumed 'url' D:\project\think3_2\Runtime\Cache\Admin\9df924d9a2d217daa77a359c5bee0c33.php 第 66 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.131845s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.131906s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000399s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000451s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001027s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001084s ]
+
+[ 2016-10-23T21:29:19+08:00 ] ::1 /index.php/Admin/Index/img/thumbnail_george.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000318s ]
+

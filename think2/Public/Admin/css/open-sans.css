@@ -1,0 +1,7 @@
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(/Public/Admin/fonts/open-sans-bold.woff) format('woff');
+}

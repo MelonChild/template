@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>点击选择图片</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="stylesheet" href="shearphoto_common/layui/css/layui.css"  media="all">
+  <link rel="stylesheet" href="shearphoto_common/css/cropper.css"  media="all">
+  
+</head>
+<body>
+
+<div class="site-demo-upload" style="width:15%;float:left;">
+  <img class="upload-show-img"  src="shearphoto_common/images/background.jpg" style="width:200px;height:200px;border-radius:100%;">
+  <input type="hidden" class="upload-show-input" value=""/>
+  <div class="site-demo-upbar" style="top: 29%;left:41%;">
+    <div class="layui-box layui-upload-button upload-check-img">
+		<span class="layui-upload-icon"><i class="layui-icon"></i>查看图片</span>
+	</div>
+	
+	<div class="layui-box layui-upload-button site-upfile-layer">
+		<span class="layui-upload-icon"><i class="layui-icon"></i>上传图片</span>
+	</div>
+	
+	<div class="layui-box layui-upload-button upload-delete-img">
+		<span class="layui-upload-icon"><i class="layui-icon"></i>删除图片</span>
+	</div>
+  </div>
+</div>
+<script src="shearphoto_common/layui/layui.js" charset="utf-8"></script>
+<script>
+var $,
+	layer,
+	defaultImg="shearphoto_common/images/background.jpg", //默认背景图片
+	deleteImgUrl="shearphoto_common/php/delete.php", //删除图片
+	uploadImgUrl="shearphoto_common/php/upload.php", //上传图片
+	cropImgUrl="shearphoto_common/php/shearphoto.php", //裁剪图片
+	relativeUrl="public", //图片存放顶级文件
+	styleUrl="shearphoto_common", //js css images 存放相对路径
+	saveUrl="test", //图片存放文件夹
+	cropwidth=500;//图片裁剪生成宽度
+	layui.config({
+  base: 'shearphoto_common/js/' 
+}).use('cropper'); 
+</script>
+
+</body>
+</html>
